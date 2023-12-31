@@ -39,7 +39,7 @@ export default function Window({ data, boundaryRef, clickedDiv, onClick }) {
     >
       <div className="absolute flex flex-col w-full h-full active:scale-[0.97] active:shadow-lg transition-[shadow,transform] shadow-xl ring-1 ring-gray-100">
         <div
-          className="w-full h-[30px] bg-yellow-500 cursor-move"
+          className="w-full h-[30px] bg-WINDOW_HEADER cursor-move text-white"
           {...registMouseDownDrag(
             (deltaX, deltaY) => {
               if (!boundaryRef.current) return;
@@ -65,7 +65,7 @@ export default function Window({ data, boundaryRef, clickedDiv, onClick }) {
             () => onClick(title)
           )}
         >
-          헤더
+          {title}
         </div>
         <Box />
       </div>

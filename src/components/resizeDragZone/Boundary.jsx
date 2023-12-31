@@ -6,7 +6,7 @@ export default React.forwardRef(function Boundary(props, ref) {
       {...props}
       ref={ref}
       className={
-        "relative h-screen overflow-hidden bg-[#CDD0E5] " + props.className
+        "relative h-screen overflow-hidden bg-BACKGROUND " + props.className
       }
     />
   );
