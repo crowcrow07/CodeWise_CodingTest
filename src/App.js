@@ -22,7 +22,7 @@ function App() {
   return (
     <div className="flex h-screen">
       <Sidebar />
-      <ResizeDragZone data={DATA} />
+      <ResizeDragZone DATA={DATA} />
     </div>
   );
 }
