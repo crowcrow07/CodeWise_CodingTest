@@ -1,13 +1,20 @@
 import { useState, useEffect } from "react";
 
 import { inRange, registMouseDownDrag } from "../../utils/utils";
+import { windowImg } from "../../assets/images";
 import Box from "../../ui/Box";
 
-export default function Window({ data, boundaryRef, clickedDiv, onClick }) {
-  const { title = "No Title", location, area, init } = data;
+export default function Window({
+  data,
+  boundaryRef,
+  clickedDiv,
+  handleDivClick,
+}) {
+  const { id, header, location, area, init } = data;
+  const { title = "No Title", icon } = header;
   const { X = 0, Y = 0 } = location;
-  const { W = 240, H = 120 } = area;
-  const { BOUNDARY_MARGIN = 12, MIN_W = 80, MIN_H = 80 } = init;
+  const { W = 500, H = 500 } = area;
+  const { BOUNDARY_MARGIN = 12, MIN_W = 500, MIN_H = 500 } = init;
 
   const [{ x, y, w, h }, setConfig] = useState({
     x: X,
@@ -23,8 +30,8 @@ export default function Window({ data, boundaryRef, clickedDiv, onClick }) {
       const DEFAULT_W = W;
       const DEFAULT_H = H;
       setConfig({
-        x: Math.floor(boundary.width / 2 - DEFAULT_W / 2),
-        y: Math.floor(boundary.height / 2 - DEFAULT_H / 2),
+        x: Math.floor(boundary.width / 2 - DEFAULT_W / 2) + X,
+        y: Math.floor(boundary.height / 2 - DEFAULT_H / 2) + Y,
         w: DEFAULT_W,
         h: DEFAULT_H,
       });
@@ -34,12 +41,12 @@ export default function Window({ data, boundaryRef, clickedDiv, onClick }) {
   return (
     <section
       style={{ width: w, height: h, left: x, top: y }}
-      className={`absolute ${clickedDiv === title && "z-10"}`}
-      onClick={() => onClick(title)}
+      className={`absolute ${clickedDiv === id && "z-10"}`}
+      onClick={() => handleDivClick("window", id)}
     >
-      <div className="absolute flex flex-col w-full h-full active:scale-[0.97] active:shadow-lg transition-[shadow,transform] shadow-xl ring-1 ring-gray-100">
+      <div className={`${windowContainer}`}>
         <div
-          className="w-full h-[30px] bg-WINDOW_HEADER cursor-move text-white"
+          className={`${windowHeader} p-2 flex items-center justify-between`}
           {...registMouseDownDrag(
             (deltaX, deltaY) => {
               if (!boundaryRef.current) return;
@@ -62,10 +69,16 @@ export default function Window({ data, boundaryRef, clickedDiv, onClick }) {
               });
             },
             false,
-            () => onClick(title)
+            () => handleDivClick("window", id)
           )}
         >
-          {title}
+          <div className="flex text-xs">
+            {icon && <img className="mr-0.5" src={icon} alt="icon" />}
+            {title}
+          </div>
+          <button onClick={() => handleDivClick("close", id)}>
+            <img src={windowImg.closeButton} alt="closebutton" />
+          </button>
         </div>
         <Box />
       </div>
@@ -91,7 +104,7 @@ export default function Window({ data, boundaryRef, clickedDiv, onClick }) {
             });
           },
           true,
-          () => onClick(title)
+          () => handleDivClick("window", id)
         )}
       />
       {/* 우하단 */}
@@ -119,7 +132,7 @@ export default function Window({ data, boundaryRef, clickedDiv, onClick }) {
             });
           },
           true,
-          () => onClick(title)
+          () => handleDivClick("window", id)
         )}
       />
 
@@ -144,7 +157,7 @@ export default function Window({ data, boundaryRef, clickedDiv, onClick }) {
             });
           },
           true,
-          () => onClick(title)
+          () => handleDivClick("window", id)
         )}
       />
       {/* 우측 */}
@@ -168,7 +181,7 @@ export default function Window({ data, boundaryRef, clickedDiv, onClick }) {
             });
           },
           true,
-          () => onClick(title)
+          () => handleDivClick("window", id)
         )}
       />
       {/* 좌측 */}
@@ -184,9 +197,16 @@ export default function Window({ data, boundaryRef, clickedDiv, onClick }) {
             });
           },
           true,
-          () => onClick(title)
+          () => handleDivClick("window", id)
         )}
       />
     </section>
   );
 }
+
+const windowContainer =
+  "absolute flex flex-col w-full h-full active:shadow-lg transition-[shadow,transform] shadow-xl ring-1 ring-gray-100";
+
+const windowHeader = "w-full h-[30px] bg-WINDOW_HEADER cursor-move text-white";
+
+// active:scale-[0.97]
