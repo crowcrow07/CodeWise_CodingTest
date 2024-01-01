@@ -6,8 +6,8 @@ module.exports = {
       colors: {
         BLACK: "#191919",
         BORDER: "#CDD0E5",
+        SIDE_BAR: "#818DA5",
         WINDOW_HEADER: "#2E3E76",
-        MAIL_HEADER: "#818DA5",
         BUTTON_BORDER: "#B3B6C7",
         INPUT: "#F2F4F7",
         MAIL_COUNTER_FONT: "#698CC2",
