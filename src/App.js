@@ -1,28 +1,45 @@
+import { useState } from "react";
+
 import Sidebar from "./components/sidebar/Sidebar";
 import ResizeDragZone from "./components/resizeDragZone/ResizeDragZone";
 
+import { DATA } from "./utils/DATA";
+
 function App() {
-  const DATA = [
-    {
-      id: 1,
-      title: "컨텐츠 목록",
-      location: { X: 0, Y: 0 },
-      area: { W: 240, H: 120 },
-      init: { BOUNDARY_MARGIN: 12, MIN_W: 80, MIN_H: 80 },
-    },
-    {
-      id: 2,
-      title: "컨텐츠 설정",
-      location: { X: 0, Y: 0 },
-      area: { W: 120, H: 240 },
-      init: { BOUNDARY_MARGIN: 12, MIN_W: 100, MIN_H: 100 },
-    },
-  ];
+  const [data, setData] = useState(DATA);
+  const [clickedDiv, setClickedDiv] = useState(null);
+
+  const handleOpenButton = (sidebar) => {
+    const isIdExist = data.some((item) => item.id === sidebar.id);
+
+    if (!isIdExist) {
+      setData((prev) => [...prev, sidebar]);
+    }
+    setClickedDiv(sidebar.id);
+  };
+
+  const handleCloseButton = (id) => {
+    const userConfirmed = window.confirm(
+      "창을 닫으시겠습니까? 저장되지 않은 데이터는 사라집니다."
+    );
+
+    if (userConfirmed) {
+      setData((prev) => {
+        const updatedData = prev.filter((item) => item.id !== id);
+        return updatedData;
+      });
+    }
+  };
 
   return (
     <div className="flex h-screen">
-      <Sidebar />
-      <ResizeDragZone data={DATA} />
+      <Sidebar DATA={data} handleOpenButton={handleOpenButton} />
+      <ResizeDragZone
+        DATA={data}
+        clickedDiv={clickedDiv}
+        setClickedDiv={setClickedDiv}
+        handleCloseButton={handleCloseButton}
+      />
     </div>
   );
 }

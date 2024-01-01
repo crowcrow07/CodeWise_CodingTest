@@ -1,46 +1,48 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 
 import Boundary from "./Boundary";
 import Window from "./Window";
 
-export default function ResizeDragZone({ data }) {
+export default function ResizeDragZone({
+  DATA,
+  clickedDiv,
+  setClickedDiv,
+  handleCloseButton,
+}) {
   const boundaryRef = useRef(null);
 
-  const [clickedDiv, setClickedDiv] = useState(null);
-
-  const handleDivClick = (divId) => {
-    setClickedDiv(divId);
-  };
-
-  const [Data, setData] = useState(data);
-
-  useEffect(() => {
-    const boundary = boundaryRef.current.getBoundingClientRect();
-
-    if (boundary) {
-      setData((prevData) => {
-        return prevData.map((item) => ({
-          ...item,
-          boundary: boundary,
-        }));
-      });
+  const handleDivClick = (type, divId) => {
+    switch (type) {
+      case "window":
+        setClickedDiv(divId);
+        break;
+      case "close":
+        handleCloseButton(divId);
+        break;
+      default:
+        console.log("error");
     }
-  }, []);
+  };
 
   return (
     <div className="w-screen">
       <Boundary ref={boundaryRef}>
-        {Data.map((data) => {
-          return (
-            <Window
-              key={data.id}
-              data={data}
-              boundaryRef={boundaryRef}
-              clickedDiv={clickedDiv}
-              onClick={handleDivClick}
-            />
-          );
-        })}
+        {DATA &&
+          DATA.map((data) => {
+            data.location = {
+              X: data.id * 30,
+              Y: data.id * 30,
+            };
+            return (
+              <Window
+                key={data.id}
+                data={data}
+                boundaryRef={boundaryRef}
+                clickedDiv={clickedDiv}
+                handleDivClick={handleDivClick}
+              />
+            );
+          })}
       </Boundary>
     </div>
   );
