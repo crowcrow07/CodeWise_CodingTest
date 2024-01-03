@@ -14,17 +14,17 @@ export const initData = [
     area: { W: 1145, H: 352 },
     init: { BOUNDARY_MARGIN: 12, MIN_W: 700, MIN_H: 322 },
   },
-  // {
-  //   id: 1,
-  //   header: {
-  //     title: "컨텐츠 설정",
-  //     icon: null,
-  //   },
+  //   {
+  //     id: 1,
+  //     header: {
+  //       title: "컨텐츠 설정",
+  //       icon: null,
+  //     },
 
-  //   location: { X: 0, Y: 0 },
-  //   area: { W: 1145, H: 620 },
-  //   init: { BOUNDARY_MARGIN: 12, MIN_W: 500, MIN_H: 620 },
-  // },
+  //     location: { X: 0, Y: 0 },
+  //     area: { W: 1145, H: 620 },
+  //     init: { BOUNDARY_MARGIN: 12, MIN_W: 500, MIN_H: 620 },
+  //   },
 ];
 
 export const initColumns = [
