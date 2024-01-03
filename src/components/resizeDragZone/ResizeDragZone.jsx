@@ -28,6 +28,7 @@ export default function ResizeDragZone({
     <div className="w-screen">
       <Boundary ref={boundaryRef}>
         {DATA &&
+          boundaryRef &&
           DATA.map((data) => {
             data.location = {
               X: data.id * 30,
