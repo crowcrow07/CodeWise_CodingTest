@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import { inRange, registMouseDownDrag } from "../../utils/utils";
 import { windowImg } from "../../assets/images";
 import Box from "../../ui/Box";
+import ContentList from "../../screen/contents_list";
+import ContentSetting from "../../screen/contents_setting";
 
 export default function Window({
   data,
@@ -80,7 +82,9 @@ export default function Window({
             <img src={windowImg.closeButton} alt="closebutton" />
           </button>
         </div>
-        <Box />
+        <Box className={`h-full`}>
+          {title === "컨텐츠 목록" ? <ContentList /> : <ContentSetting />}
+        </Box>
       </div>
 
       {/* 좌하단 */}
@@ -205,7 +209,7 @@ export default function Window({
 }
 
 const windowContainer =
-  "absolute flex flex-col w-full h-full active:shadow-lg transition-[shadow,transform] shadow-xl ring-1 ring-gray-100";
+  "absolute overflow-hidden flex flex-col w-full h-full active:shadow-lg transition-[shadow,transform] shadow-xl ring-1 ring-gray-100";
 
 const windowHeader = "w-full h-[30px] bg-WINDOW_HEADER cursor-move text-white";
 
