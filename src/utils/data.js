@@ -5,22 +5,22 @@ import { windowImg } from "../assets/images";
 export const initData = [
   {
     id: 0,
+    contents: null,
     header: {
       title: "컨텐츠 목록",
       icon: windowImg.baseline,
     },
-
-    location: { X: 0, Y: 0 },
+    location: { X: 0, Y: 500 },
     area: { W: 1145, H: 352 },
     init: { BOUNDARY_MARGIN: 12, MIN_W: 700, MIN_H: 322 },
   },
   //   {
   //     id: 1,
+  //     contents : null,
   //     header: {
   //       title: "컨텐츠 설정",
   //       icon: null,
   //     },
-
   //     location: { X: 0, Y: 0 },
   //     area: { W: 1145, H: 620 },
   //     init: { BOUNDARY_MARGIN: 12, MIN_W: 500, MIN_H: 620 },
