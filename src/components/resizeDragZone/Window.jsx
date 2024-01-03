@@ -11,6 +11,7 @@ export default function Window({
   boundaryRef,
   clickedDiv,
   handleDivClick,
+  handleOpenButton,
 }) {
   const { id, header, location, area, init } = data;
   const { title = "No Title", icon } = header;
@@ -44,7 +45,6 @@ export default function Window({
     <section
       style={{ width: w, height: h, left: x, top: y }}
       className={`absolute ${clickedDiv === id && "z-10"}`}
-      onClick={() => handleDivClick("window", id)}
     >
       <div className={`${windowContainer}`}>
         <div
@@ -83,7 +83,15 @@ export default function Window({
           </button>
         </div>
         <Box className={`h-full`}>
-          {title === "컨텐츠 목록" ? <ContentList /> : <ContentSetting />}
+          {title === "컨텐츠 목록" ? (
+            <ContentList
+              id={id}
+              handleOpenButton={handleOpenButton}
+              handleDivClick={handleDivClick}
+            />
+          ) : (
+            <ContentSetting handleDivClick={handleDivClick} />
+          )}
         </Box>
       </div>
 

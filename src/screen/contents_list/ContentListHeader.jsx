@@ -4,7 +4,12 @@ import { deleteData } from "../../api/deleteData";
 
 import Button from "../../ui/Button";
 
-export default function ContentListHeader({ table, dataQuery, rowSelection }) {
+export default function ContentListHeader({
+  table,
+  dataQuery,
+  rowSelection,
+  handleOpenButton,
+}) {
   const queryClient = useQueryClient();
 
   const deleteDataQuery = useMutation({
@@ -29,6 +34,18 @@ export default function ContentListHeader({ table, dataQuery, rowSelection }) {
   );
   const uniqueMailTypesCount = uniqueMailTypes.size;
 
+  const contentSetting = {
+    id: 1,
+    header: {
+      title: "컨텐츠 설정",
+      icon: null,
+    },
+
+    location: { X: 0, Y: 0 },
+    area: { W: 1145, H: 620 },
+    init: { BOUNDARY_MARGIN: 12, MIN_W: 500, MIN_H: 620 },
+  };
+
   return (
     <div className={`${contentListHeader}`}>
       <div className="flex items-center">
@@ -38,7 +55,12 @@ export default function ContentListHeader({ table, dataQuery, rowSelection }) {
         <div>등록된 전체 메일 유형입니다.</div>
       </div>
       <div className="flex">
-        <Button className={"mr-[7px]"}>등록</Button>
+        <Button
+          onClick={() => handleOpenButton(contentSetting)}
+          className={"mr-[7px]"}
+        >
+          등록
+        </Button>
         <Button
           disabled={!Object.keys(rowSelection).length}
           onClick={() => deleteDataQuery.mutate(getSelectedRowModelHandler)}
