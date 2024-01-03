@@ -1,5 +1,5 @@
 import MockApi from "../utils/mockApi";
-import convertDateTime from "../utils/converDateTime";
+import convertDateTime from "../utils/convertDateTime";
 
 const mockApi = new MockApi();
 
