@@ -10,13 +10,13 @@ function App() {
   const [clickedDiv, setClickedDiv] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(true);
 
-  const handleOpenButton = (sidebar) => {
-    const isIdExist = data.some((item) => item.id === sidebar.id);
+  const handleOpenButton = (payload) => {
+    const isIdExist = data.some((item) => item.id === payload.id);
 
     if (!isIdExist) {
-      setData((prev) => [...prev, sidebar]);
+      setData((prev) => [...prev, payload]);
     }
-    setClickedDiv(sidebar.id);
+    setClickedDiv(payload.id);
   };
 
   const handleCloseButton = (id) => {
@@ -63,6 +63,7 @@ function App() {
         DATA={data}
         clickedDiv={clickedDiv}
         setClickedDiv={setClickedDiv}
+        handleOpenButton={handleOpenButton}
         handleCloseButton={handleCloseButton}
       />
     </div>

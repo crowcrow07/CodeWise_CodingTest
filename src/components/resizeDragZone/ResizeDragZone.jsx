@@ -7,6 +7,7 @@ export default function ResizeDragZone({
   DATA,
   clickedDiv,
   setClickedDiv,
+  handleOpenButton,
   handleCloseButton,
 }) {
   const boundaryRef = useRef(null);
@@ -41,6 +42,7 @@ export default function ResizeDragZone({
                 boundaryRef={boundaryRef}
                 clickedDiv={clickedDiv}
                 handleDivClick={handleDivClick}
+                handleOpenButton={handleOpenButton}
               />
             );
           })}
