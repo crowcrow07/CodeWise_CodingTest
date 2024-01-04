@@ -14,6 +14,7 @@ module.exports = {
         MAIL_COUNTER: "#DDEBFF",
         BACKGROUND: "#D9DAE2",
         SELECT_HIGHLIGHT: "#FFFBD8",
+        SETTING_HEADER: "#7E8DA7",
       },
     },
   },
