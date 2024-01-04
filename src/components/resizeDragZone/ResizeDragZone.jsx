@@ -31,10 +31,11 @@ export default function ResizeDragZone({
         {DATA &&
           boundaryRef &&
           DATA.map((data) => {
-            data.location = {
-              X: data.id * 30,
-              Y: data.id * 30,
-            };
+            // parameter 값을 변경할때는 신중, setState를 사용했으면 문제가 없었을것이다.
+            // data.location = {
+            //   X: data.id * 30,
+            //   Y: data.id * 30,
+            // };
             return (
               <Window
                 key={data.id}
