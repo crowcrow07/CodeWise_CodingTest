@@ -36,6 +36,7 @@ export default function ContentListHeader({
 
   const contentSetting = {
     id: 1,
+    contents: null,
     header: {
       title: "컨텐츠 설정",
       icon: null,

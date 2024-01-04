@@ -8,7 +8,7 @@ import { initData } from "./utils/data";
 function App() {
   const [data, setData] = useState(initData);
   const [clickedDiv, setClickedDiv] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(true);
+  // const [isModalOpen, setIsModalOpen] = useState(true);
 
   const handleOpenButton = (payload) => {
     const isIdExist = data.some((item) => item.id === payload.id);
@@ -58,7 +58,8 @@ function App() {
           </div>
         )}
       </div> */}
-      <Sidebar DATA={data} handleOpenButton={handleOpenButton} />
+
+      <Sidebar handleOpenButton={handleOpenButton} />
       <ResizeDragZone
         DATA={data}
         clickedDiv={clickedDiv}

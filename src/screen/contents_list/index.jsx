@@ -77,7 +77,11 @@ export default function ContentList({ id, handleOpenButton, handleDivClick }) {
         <TableHeader table={table} />
         <div className={`${tableSection}`}>
           {!dataQuery.isFetching ? (
-            <TableBody rows={rows} table={table} />
+            <TableBody
+              rows={rows}
+              table={table}
+              handleOpenButton={handleOpenButton}
+            />
           ) : (
             <div className={`${loaderContainer}`}>
               <span className="loader"></span>
