@@ -13,7 +13,7 @@ module.exports = {
         MAIL_COUNTER_FONT: "#698CC2",
         MAIL_COUNTER: "#DDEBFF",
         BACKGROUND: "#D9DAE2",
-        SELECT_HIGHLIGHT: "#FFEB3A",
+        SELECT_HIGHLIGHT: "#FFFBD8",
       },
     },
   },

@@ -899,15 +899,6 @@
       "modificationDate": "2023-05-20T10:05:00Z",
       "mailContent": "Hello [Username],\n\nYou've requested a password reset. Follow the link to create a new secure password for your account.",
       "reason": "Account Security"
-    },
-    {
-      "mailUid": 100,
-      "mailType": "Notification",
-      "mailTitle": "Account Password Reset",
-      "ismailIUse": "Y",
-      "modificationDate": "2023-05-20T10:05:00Z",
-      "mailContent": "string",
-      "reason": "Account Security"
     }
   ]
 }

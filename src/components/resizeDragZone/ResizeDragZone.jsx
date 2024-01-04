@@ -7,6 +7,7 @@ export default function ResizeDragZone({
   DATA,
   clickedDiv,
   setClickedDiv,
+  handleOpenButton,
   handleCloseButton,
 }) {
   const boundaryRef = useRef(null);
@@ -28,11 +29,13 @@ export default function ResizeDragZone({
     <div className="w-screen">
       <Boundary ref={boundaryRef}>
         {DATA &&
+          boundaryRef &&
           DATA.map((data) => {
-            data.location = {
-              X: data.id * 30,
-              Y: data.id * 30,
-            };
+            // parameter 값을 변경할때는 신중, setState를 사용했으면 문제가 없었을것이다.
+            // data.location = {
+            //   X: data.id * 30,
+            //   Y: data.id * 30,
+            // };
             return (
               <Window
                 key={data.id}
@@ -40,6 +43,7 @@ export default function ResizeDragZone({
                 boundaryRef={boundaryRef}
                 clickedDiv={clickedDiv}
                 handleDivClick={handleDivClick}
+                handleOpenButton={handleOpenButton}
               />
             );
           })}
