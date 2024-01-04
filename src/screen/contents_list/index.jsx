@@ -31,6 +31,13 @@ export default function ContentList({ id, handleOpenButton, handleDivClick }) {
     },
     keepPreviousData: true,
   });
+  if (dataQuery.data?.rows?.length === 0) {
+    const updatedPageIndex = Math.max(0, pageIndex - 1);
+    setPagination({
+      pageIndex: updatedPageIndex,
+      pageSize,
+    });
+  }
 
   const defaultData = [];
 
