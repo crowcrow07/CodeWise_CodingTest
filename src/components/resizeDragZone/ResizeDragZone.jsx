@@ -25,7 +25,6 @@ export default function ResizeDragZone({
         handleCloseButton(type, divId);
         break;
       default:
-        console.log("error");
     }
   };
 

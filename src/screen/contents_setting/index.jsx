@@ -98,10 +98,8 @@ export default function ContentSetting({
       return;
     }
     if (!isModify) {
-      console.log("생성모드");
       postDataQuery.mutate(contentsData);
     } else {
-      console.log("수정모드");
       putDataQuery.mutate(contentsData);
     }
     handleDivClick("save", 1);

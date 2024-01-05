@@ -16,8 +16,6 @@ function App() {
   const handleOpenButton = (payload) => {
     const isIdExist = data.some((item) => item.id === payload.id);
 
-    // console.log(payload.contents);
-
     if (!isIdExist) {
       setData((prev) => [...prev, payload]);
     }
