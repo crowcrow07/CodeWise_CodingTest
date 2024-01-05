@@ -84,7 +84,7 @@ class MockApi {
         mailTitle: mailTitle || this.#db.articles[dtoIndex].mailTitle,
         ismailIUse: ismailIUse || this.#db.articles[dtoIndex].ismailIUse,
         mailContent: mailContent || this.#db.articles[dtoIndex].mailContent,
-        modificationDate: this.#getLocalDate,
+        modificationDate: this.#getLocalDate(),
         reason: reason,
       };
 
@@ -179,7 +179,7 @@ class MockApi {
       mailTitle: mailTitle,
       ismailIUse: ismailIUse,
       mailContent: mailContent,
-      modificationDate: this.#getLocalDate,
+      modificationDate: this.#getLocalDate(),
       reason: reason,
     };
 
@@ -210,14 +210,16 @@ class MockApi {
     const currentDate = new Date();
     const year = currentDate.getFullYear();
     const month = currentDate.getMonth() + 1;
-    const day = currentDate.getDate();
+    const day = currentDate.getDate() - 1;
     const hours = currentDate.getHours();
     const minutes = currentDate.getMinutes();
     const seconds = currentDate.getSeconds();
 
-    return `${year}-${
-      month < 10 ? "0" + month : month
-    }-${day}T${hours}:${minutes}:${seconds}Z`;
+    return `${year}-${month < 10 ? "0" + month : month}-${
+      day === 0 ? "01" : day < 10 ? "0" + day : day
+    }T${hours < 10 ? "0" + hours : hours}:${
+      minutes < 10 ? "0" + minutes : minutes
+    }:${seconds < 10 ? "0" + seconds : seconds}Z`;
   }
 
   #checkObjectValue(object, compereValue) {
