@@ -12,8 +12,9 @@ export default function Window({
   clickedDiv,
   handleDivClick,
   handleOpenButton,
+  handleOpenModal,
 }) {
-  const { id, header, location, area, init } = data;
+  const { id, header, location, area, init, contents } = data;
   const { title = "No Title", icon } = header;
   const { X = 0, Y = 0 } = location;
   const { W = 500, H = 500 } = area;
@@ -90,7 +91,11 @@ export default function Window({
               handleDivClick={handleDivClick}
             />
           ) : (
-            <ContentSetting handleDivClick={handleDivClick} />
+            <ContentSetting
+              contents={contents}
+              handleDivClick={handleDivClick}
+              handleOpenModal={handleOpenModal}
+            />
           )}
         </Box>
       </div>

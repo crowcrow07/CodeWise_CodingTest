@@ -8,6 +8,7 @@ export default function ResizeDragZone({
   clickedDiv,
   setClickedDiv,
   handleOpenButton,
+  handleOpenModal,
   handleCloseButton,
 }) {
   const boundaryRef = useRef(null);
@@ -18,7 +19,10 @@ export default function ResizeDragZone({
         setClickedDiv(divId);
         break;
       case "close":
-        handleCloseButton(divId);
+        handleCloseButton(type, divId);
+        break;
+      case "save":
+        handleCloseButton(type, divId);
         break;
       default:
         console.log("error");
@@ -26,16 +30,11 @@ export default function ResizeDragZone({
   };
 
   return (
-    <div className="w-screen">
+    <div className="w-screen z-[1]">
       <Boundary ref={boundaryRef}>
         {DATA &&
           boundaryRef &&
           DATA.map((data) => {
-            // parameter 값을 변경할때는 신중, setState를 사용했으면 문제가 없었을것이다.
-            // data.location = {
-            //   X: data.id * 30,
-            //   Y: data.id * 30,
-            // };
             return (
               <Window
                 key={data.id}
@@ -44,6 +43,7 @@ export default function ResizeDragZone({
                 clickedDiv={clickedDiv}
                 handleDivClick={handleDivClick}
                 handleOpenButton={handleOpenButton}
+                handleOpenModal={handleOpenModal}
               />
             );
           })}
