@@ -9,6 +9,16 @@ html {
   font-family: "Noto Sans KR", sans-serif;
 }
 
+p {
+  white-space: "pre";
+}
+
+input,
+button,
+textarea {
+  outline: none;
+}
+
 button:disabled {
   cursor: no-drop;
 }
@@ -45,4 +55,10 @@ button:disabled {
   100% {
     transform: rotate(360deg);
   }
+}
+
+.wrapper-class {
+  height: 100%;
+  position: relative;
+  overflow: hidden;
 }
