@@ -90,3 +90,77 @@ export const initColumns = [
     minSize: 157,
   },
 ];
+
+export const excelHeader = [
+  {
+    v: "mailUiD",
+    t: "s",
+    s: {
+      font: {
+        bold: true,
+        sz: "20",
+      },
+    },
+  },
+  {
+    v: "메일 유형",
+    t: "s",
+    s: {
+      font: {
+        bold: true,
+        sz: "20",
+      },
+    },
+  },
+  {
+    v: "메일 발송 제목",
+    t: "s",
+    s: {
+      font: {
+        bold: true,
+        sz: "20",
+      },
+    },
+  },
+  {
+    v: "메일 사용여부",
+    t: "s",
+    s: {
+      font: {
+        bold: true,
+        sz: "20",
+      },
+    },
+  },
+  {
+    v: "수정일",
+    t: "s",
+    s: {
+      font: {
+        bold: true,
+        sz: "20",
+      },
+    },
+  },
+
+  {
+    v: "메일 내용",
+    t: "s",
+    s: {
+      font: {
+        bold: true,
+        sz: "20",
+      },
+    },
+  },
+  {
+    v: "변경사유",
+    t: "s",
+    s: {
+      font: {
+        bold: true,
+        sz: "20",
+      },
+    },
+  },
+];

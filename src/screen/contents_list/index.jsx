@@ -8,9 +8,15 @@ import TableBody from "./TableBody";
 
 import { fetchData } from "../../api/fetchData";
 import { initColumns } from "../../utils/data";
+import { windowImg } from "../../assets/images";
+import { createDataArrayBatch } from "../../utils/utils";
+
+import XLSX from "xlsx-js-style";
+import { excelHeader } from "../../utils/data";
 
 export default function ContentList({ id, handleOpenButton, handleDivClick }) {
   const columns = useMemo(() => initColumns, []);
+  const wb = XLSX.utils.book_new();
 
   const [rowSelection, setRowSelection] = useState({});
   const [{ pageIndex, pageSize }, setPagination] = useState({
@@ -65,6 +71,16 @@ export default function ContentList({ id, handleOpenButton, handleDivClick }) {
   }
 
   const totalData = dataQuery.data?.totalData ?? -1;
+  let excelBody = [];
+  if (totalData !== -1) {
+    excelBody = createDataArrayBatch(totalData);
+  }
+  const arr = [excelHeader];
+
+  excelBody.forEach((v) => arr.push(v));
+
+  const ws = XLSX.utils.aoa_to_sheet(arr);
+  XLSX.utils.book_append_sheet(wb, ws, "readme demo");
 
   const { rows } = table.getRowModel();
 
@@ -96,7 +112,17 @@ export default function ContentList({ id, handleOpenButton, handleDivClick }) {
           )}
         </div>
         <div className={`${tableFooter} py-1`}>
-          <div className="flex justify-start flex-1 px-2">액셀 저장</div>
+          <div className="flex items-center justify-start flex-1 px-2 ">
+            <button
+              onClick={() => {
+                XLSX.writeFile(wb, "codeWise.xlsx");
+              }}
+              className="flex items-center text-xs font-bold"
+            >
+              <img src={windowImg.excelDownload} alt="excelDownload" />
+              액셀저장
+            </button>
+          </div>
           <div className="flex flex-[3] justify-center items-center gap-2">
             <button
               className="flex items-center p-1"
