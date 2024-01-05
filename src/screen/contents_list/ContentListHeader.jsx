@@ -18,7 +18,7 @@ export default function ContentListHeader({
         mailUidList: id,
       }),
     onSuccess: () => {
-      queryClient.invalidateQueries("queryKey");
+      queryClient.invalidateQueries("data");
     },
     onError: () => {
       console.error("에러 발생");
@@ -43,8 +43,8 @@ export default function ContentListHeader({
     },
 
     location: { X: 0, Y: 0 },
-    area: { W: 1145, H: 620 },
-    init: { BOUNDARY_MARGIN: 12, MIN_W: 500, MIN_H: 620 },
+    area: { W: 1145, H: 650 },
+    init: { BOUNDARY_MARGIN: 12, MIN_W: 500, MIN_H: 650 },
   };
 
   return (
