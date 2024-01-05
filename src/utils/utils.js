@@ -44,3 +44,23 @@ export function replaceEmptyPAndNewlines(mailContent) {
 
   return withoutNewlines;
 }
+
+export function createDataArrayBatch(dataList) {
+  let dataArray = [];
+  const resultArray = [];
+
+  for (const data of dataList) {
+    Object.keys(data).forEach((key, idx) => {
+      dataArray.push({
+        v: data[key],
+        t: typeof data[key] === "string" ? "s" : "n",
+      });
+      if (idx === 6) {
+        resultArray.push(dataArray);
+        dataArray = [];
+      }
+    });
+  }
+
+  return resultArray;
+}

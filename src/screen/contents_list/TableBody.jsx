@@ -61,13 +61,8 @@ export default function TableBody({ rows, handleOpenButton }) {
                 style={{
                   transform: `translateY(${virtualRow.start}px)`,
                 }}
-                // onClick={() => {
-                //   console.log("클릭됨", row.original);
-                //   handlerRowClick(row.original);
-                // }}
               >
                 {row.getVisibleCells().map((cell) => {
-                  // console.log(containsSelect(cell.id));
                   return (
                     <td
                       key={cell.id}
