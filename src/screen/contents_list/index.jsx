@@ -57,6 +57,13 @@ export default function ContentList({ id, handleOpenButton, handleDivClick }) {
     debugTable: false,
   });
 
+  if (dataQuery.data?.rows?.length === 0) {
+    setPagination({
+      pageIndex: 0,
+      pageSize,
+    });
+  }
+
   const totalData = dataQuery.data?.totalData ?? -1;
 
   const { rows } = table.getRowModel();
@@ -70,7 +77,7 @@ export default function ContentList({ id, handleOpenButton, handleDivClick }) {
         handleOpenButton={handleOpenButton}
         handleDivClick={handleDivClick}
       />
-      <div
+      <table
         onClick={() => handleDivClick("window", id)}
         className={`${tableContainer}`}
       >
@@ -88,18 +95,18 @@ export default function ContentList({ id, handleOpenButton, handleDivClick }) {
             </div>
           )}
         </div>
-        <div className={`${tableFooter}`}>
+        <div className={`${tableFooter} py-1`}>
           <div className="flex justify-start flex-1 px-2">액셀 저장</div>
-          <div className="flex flex-[3] justify-center gap-2 bg-white">
+          <div className="flex flex-[3] justify-center items-center gap-2">
             <button
-              className="p-1"
+              className="flex items-center p-1"
               onClick={() => table.setPageIndex(0)}
               disabled={!table.getCanPreviousPage()}
             >
               {"<<"}
             </button>
             <button
-              className="p-1"
+              className="flex items-center p-1"
               onClick={() => table.previousPage()}
               disabled={!table.getCanPreviousPage()}
             >
@@ -121,7 +128,7 @@ export default function ContentList({ id, handleOpenButton, handleDivClick }) {
                   const page = e.target.value ? Number(e.target.value) - 1 : 0;
                   table.setPageIndex(page);
                 }}
-                className="w-16 p-1 border rounded"
+                className="w-16 text-center rounded"
               />
             </span>
             <button
@@ -170,7 +177,7 @@ export default function ContentList({ id, handleOpenButton, handleDivClick }) {
             / {totalData.length}
           </div>
         </div>
-      </div>
+      </table>
     </div>
   );
 }
@@ -185,4 +192,4 @@ const tableSection = "flex w-full h-full";
 const loaderContainer = "flex items-center justify-center w-full h-full";
 
 const tableFooter =
-  "flex w-full items-center border-t-[1px] border-solid border-BORDER";
+  "flex w-full items-center border-t-[1px] border-solid border-BORDER bg-TABLE_FOOTER";

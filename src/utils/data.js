@@ -36,8 +36,8 @@ export const sidebarData = [
     },
     contents: null,
     location: { X: 0, Y: 0 },
-    area: { W: 1145, H: 620 },
-    init: { BOUNDARY_MARGIN: 12, MIN_W: 500, MIN_H: 620 },
+    area: { W: 1145, H: 650 },
+    init: { BOUNDARY_MARGIN: 12, MIN_W: 500, MIN_H: 650 },
   },
 ];
 

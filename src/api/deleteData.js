@@ -7,6 +7,6 @@ export const deleteData = async (options) => {
     const response = await mockApi.delete(options);
     return response;
   } catch (error) {
-    console.error("Error fetching data:", error);
+    console.error("Error deleting data:", error);
   }
 };

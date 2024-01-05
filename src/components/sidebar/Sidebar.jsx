@@ -3,8 +3,8 @@ import { sidebarData } from "../../utils/data";
 
 export default function Sidebar({ handleOpenButton }) {
   return (
-    <div className={`${BORDER} bg-SIDE_BAR min-w-[230px] p-2`}>
-      <div className="flex items-center justify-center p-4 mb-8 border-b-2 border-solid border-BORDER">
+    <div className={`${BORDER} ${sidebarContainer}`}>
+      <div className={`${logoContainer}`}>
         <img src={logo.codewise} alt="codewise" />
       </div>
       {sidebarData &&
@@ -13,7 +13,7 @@ export default function Sidebar({ handleOpenButton }) {
           const { title } = header;
           return (
             <div
-              className={`${BORDER} text-white p-4 m-1 text-center text-[20px] cursor-pointer active:scale-95`}
+              className={`${BORDER} ${sidebarButton}`}
               key={id}
               onClick={() => handleOpenButton(data)}
             >
@@ -26,3 +26,11 @@ export default function Sidebar({ handleOpenButton }) {
 }
 
 const BORDER = "border-[1px] border-solid border-BORDER";
+
+const sidebarContainer = "bg-SIDE_BAR min-w-[230px] p-2 z-[1]";
+
+const logoContainer =
+  "flex items-center justify-center p-4 mb-8 border-b-2 border-solid border-BORDER";
+
+const sidebarButton =
+  "text-white p-4 m-1 text-center text-[20px] cursor-pointer active:scale-95";

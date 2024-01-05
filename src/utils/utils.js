@@ -1,3 +1,5 @@
+import DOMPurify from "dompurify";
+
 // 범위를 얻는 유틸함수
 export const inRange = (v, min, max) => {
   if (v < min) return min;
@@ -27,3 +29,18 @@ export const registMouseDownDrag = (onDragChange, stopPropagation, zIndex) => {
     },
   };
 };
+
+// XSS 공격 대비
+export function createMarkup(html) {
+  return {
+    __html: DOMPurify.sanitize(html),
+  };
+}
+
+// <p></p>, \n -> <br/>
+export function replaceEmptyPAndNewlines(mailContent) {
+  const withoutEmptyP = mailContent.replace(/<p><\/p>/gi, "<br/>");
+  const withoutNewlines = withoutEmptyP.replace(/\n/g, "<br/>");
+
+  return withoutNewlines;
+}
