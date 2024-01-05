@@ -3,8 +3,9 @@
 2023.1.5(금) 24:00
 
 # 과제 테스트 결과 사진
+<img width="960" alt="스크린샷 2024-01-06 오전 12 00 12" src="https://github.com/crowcrow07/CodeWise_CodingTest/assets/88226519/b33d071f-a4b9-4741-b77d-fd2da3d43c64">
 
-![Alt text](image.png)
+
 
 ## 동작하는 세부 기능들
 
